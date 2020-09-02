@@ -17,7 +17,7 @@ mongoose.connect(mongoUri, { useNewUrlParser: true });
 
 // APIs
 // const carAPI   = require('./routes/car');
-// const userAPI		= require('./routes/user');
+const userAPI		= require('./routes/user');
 
 // models
 const Car   	= require('./models/car');
@@ -33,4 +33,4 @@ app.use('/uberDB', router);
 
 const port     	= process.env.PORT || 3000
 app.listen(port);
-console.log('Starting taxiservice on port ' + port);
+console.log('Starting UberLike on port ' + port);

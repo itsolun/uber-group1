@@ -16,7 +16,7 @@ mongoose.connect(mongoUri, { useNewUrlParser: true });
 
 
 // APIs
-// const carAPI   = require('./routes/car');
+const carAPI   = require('./routes/car');
 const userAPI		= require('./routes/user');
 
 // models
@@ -25,11 +25,23 @@ const User		= require('./models/user');
 const Trip		= require('./models/trip');
 const Point		= require('./models/point');
 
+router.route('/user')
+
+	.post(userAPI.postUser)
+
+	.get(userAPI.getAllUsers);
 
 
+router.route('user/:_id')
+
+	.get(userAPI.getUserById)
+
+	.put(userAPI.updateUser)
+
+	.delete(userAPI.deleteUser);
 
 
-app.use('/uberDB', router);
+app.use('/uber', router);
 
 const port     	= process.env.PORT || 3000
 app.listen(port);

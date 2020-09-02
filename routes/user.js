@@ -25,9 +25,9 @@ const postUser = function postUser(req, res){
   });
 };
 
-// update user with personal id
+// update user with username
 const updateUser = function updateUser(req, res) {
-	User.findById(req.params._id, function(err, user) {
+	User.findOne({username: req.params.username}, function(err, user) {
 		if (err) {
 			console.log(err);
 			return res.send(err);
@@ -49,9 +49,9 @@ const updateUser = function updateUser(req, res) {
 	});
 };
 
-// delete user with personal id
+// delete user with username
 const deleteUser = function deleteUser(req, res) {
-	User.remove({_id: req.params._id}, function(err, user) {
+	User.remove({username: req.params.username}, function(err, user) {
 		if (err) {
 			console.log(err);
 			return res.send(err);
@@ -71,8 +71,8 @@ const getAllUsers = function getAllUsers(req, res){
 	});
 };
 
-var getUserById = function getUserById(req, res) {
-	User.findById(req.params._id, function(err, user) {
+var getUserByUsername = function getUserById(req, res) {
+	User.findOne({username: req.params.username}, function(err, user) {
 		if (err) {
 			console.log(err);
 			return res.send(err);

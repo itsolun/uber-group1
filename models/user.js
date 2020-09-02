@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
-const randToken = require('rand-token')
+const randToken = require('rand-token');
+const Point = require('./Point')
+const Car = require('./car')
+const Schema = mongoose.Schema;
+
 const UserSchema = mongoose.Schema({
   username: {
     type: String,
     required: true
-
   },
   password: {
     type: String,
@@ -25,15 +28,8 @@ const UserSchema = mongoose.Schema({
     required: true
   },
   location: {
-    type: {
-      type: String, // Don't do `{ location: { type: String } }`
-      enum: ['Point'], // 'location.type' must be 'Point'
-      required: true
-    },
-    coordinates: {
-      type: [Number],
-      required: true
-    }
+    type: Point,
+    required: true
   },
   available: {
     type: Boolean,

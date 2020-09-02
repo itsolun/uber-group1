@@ -83,6 +83,6 @@ var getUserByUsername = function getUserById(req, res) {
 
 exports.postUser = postUser;
 exports.getAllUsers = getAllUsers;
-exports.getUserById = getUserById;
+exports.getUserById = getUserByUsername;
 exports.updateUser = updateUser;
 exports.deleteUser = deleteUser;

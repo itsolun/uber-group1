@@ -1,18 +1,22 @@
 const express = require('express');
 const app = express();
-const router = express.Router();
+const routes = express.Router();
 
 app.use(express.json());
 
 
 
 const db = "uberDB";
-var mongoUri = process.env.MONGOLAB_URI ||
+const mongodbLink = process.env.MONGOLAB_URI ||
 process.env.MONGOHQ_URL ||
 'mongodb://localhost/' + db ;
 
 const mongoose = require("mongoose");
-mongoose.connect(mongoUri, { useNewUrlParser: true });
+mongoose.connect(mongodbLink, { useNewUrlParser: true }).then(value => {
+    console.log(value.models);
+}).catch(error => {
+    console.log(error);
+});
 
 
 // APIs
@@ -25,14 +29,14 @@ const User = require('./models/user');
 const Trip = require('./models/trip');
 const Point = require('./models/point');
 
-router.route('/user')
+routes.route('/user')
 
 .post(userAPI.postUser)
 
 .get(userAPI.getAllUsers);
 
 
-router.route('user/:_id')
+routes.route('user/:_id')
 
 .get(userAPI.getUserById)
 
@@ -41,7 +45,7 @@ router.route('user/:_id')
 .delete(userAPI.deleteUser);
 
 
-app.use('/uber', router);
+app.use('/', routes);
 
 const port = process.env.PORT || 3000
 app.listen(port);

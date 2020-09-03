@@ -41,7 +41,8 @@ const UserSchema = mongoose.Schema({
   },
   car: {
     type: Schema.Types.ObjectId, ref: 'Car'
-  }
+  },
+  trips: [{type: Schema.Types.ObjectId, ref: 'Trip'}]
 }
 );
 

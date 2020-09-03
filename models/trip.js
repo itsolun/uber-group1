@@ -26,11 +26,11 @@ const TripSchema = mongoose.Schema({
   },
   driver: {
     type: Schema.Types.ObjectId, ref: 'User',
-    equired: true
+    required: true
   },
   rider: {
     type: Schema.Types.ObjectId, ref: 'User',
-    equired: true
+    required: true
   },
   car: {
     type: Schema.Types.ObjectId, ref: 'Car',

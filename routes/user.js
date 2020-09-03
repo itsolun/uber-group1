@@ -71,7 +71,7 @@ const getAllUsers = function getAllUsers(req, res){
 	});
 };
 
-var getUserByUsername = function getUserById(req, res) {
+const getUserByUsername = function getUserById(req, res) {
 	User.findOne({username: req.params.username}, function(err, user) {
 		if (err) {
 			console.log(err);
@@ -80,6 +80,17 @@ var getUserByUsername = function getUserById(req, res) {
 		return res.send(user);
 	});
 };
+
+// edit function to get user trips
+// const getUserTrips = function getUserTrips(req, res) {
+// 	User.findAll({trips: req.params.username}, function(err, user) {
+// 		if (err) {
+// 			console.log(err);
+// 			return res.send(err);
+// 		}
+// 		return res.send(user);
+// 	});
+// };
 
 exports.postUser = postUser;
 exports.getAllUsers = getAllUsers;

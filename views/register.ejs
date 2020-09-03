@@ -44,7 +44,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarNav">
      <ul class="navbar-nav">
-       <li class="nav-item active">
+       <li class="nav-item">
          <a class="nav-link" href="/">HomePage<span class="sr-only">Home</span></a>
        </li>
        <li class="nav-item active">
@@ -61,14 +61,14 @@
    </nav>
 
   <body class="text-center" data-gr-c-s-loaded="true">
-        <form action="/" class="form-signin" method="POST">
+        <form action="/register" class="form-signin" method="POST">
             <img id="image1" class="mb-4" src="img/TAXI.jpg" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Sign Up to UberLike</h1>
-            <input type="First Name" name="fname" class="form-control top" placeholder="First Name" required="" autofocus="">
-            <input type="Last Name" name="lname" class="form-control middle" placeholder="Last Name" required="" autofocus="">
-            <input type="Role" name="role" class="form-control middle" placeholder="Driver/User" required="" autofocus="">
-            <input type="mobile" name="mobile" class="form-control middle" placeholder="Phone Number" required="" autofocus="">
-            <input type="email" name="email" class="form-control bottom" placeholder="Email address" required="" autofocus="">
+            <input type="name" name="name" class="form-control top" placeholder="Username" required="" autofocus="">
+            <input type="password" name="password" class="form-control middle" placeholder="Password" required="" autofocus="">
+            <input type="email" name="email" class="form-control middle" placeholder="Email address" required="" autofocus="">
+            <input type="role" name="role" class="form-control middle" placeholder="Driver/User" required="" autofocus="">
+            <input type="mobile" name="mobile" class="form-control bottom" placeholder="Phone Number" required="" autofocus="">
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
             <p class="mt-5 mb-3 text-muted">© 2020</p>
       </form>

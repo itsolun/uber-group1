@@ -29,11 +29,11 @@ const UserSchema = mongoose.Schema({
   },
   location: {
     type: Point,
-    required: true
+    // required: true
   },
   available: {
     type: Boolean,
-    required: true
+    // required: true
   },
   mobile: {
     type: Number,

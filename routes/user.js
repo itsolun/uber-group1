@@ -8,7 +8,7 @@ const User =  require('../models/user');
 const postUser = function postUser(req, res){
   // new instance
   const user = new User();
-  user.username = req.body.name;
+  user.username = req.body.username;
   user.password = req.body.password;
   user.email = req.body.email;
   user.role = req.body.role;

@@ -48,9 +48,18 @@ app.get("/register", function (req, res) {
     res.render("register");
 });
 
+app.get("/success", function (req, res) {
+    res.render("success");
+});
+
 app.post("/register", function(req, res){
-  // const new_user = post()
-  console.log(userAPI.postUser());
+  const new_user = routes.route('/user').post(userAPI.postUser)
+    mongoose.connection.collection(db).insertOne(new_user, function(err, collection){
+        if (err) throw err;
+        console.log("Record inserted Successfully");
+
+    });
+    return res.render('success');
 });
 
 

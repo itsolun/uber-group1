@@ -1,10 +1,32 @@
 const express = require('express');
 const app = express();
 const routes = express.Router();
+const passport = require("passport");
+const localStrategy = require("passport-local");
+const passportLocalMongoose = require("passport-local-mongoose");
+
+
+// models
+// const dashboard = require('./routes/website/public');
+const Car = require('./models/car');
+const User = require('./models/user');
+const Trip = require('./models/trip');
+const Point = require('./models/point');
+
+
+// APIs
+const carAPI   = require('./routes/car');
+const userAPI		= require('./routes/user');
 
 app.use(express.json());
+app.set("view engine", "ejs");
+app.use(express.static("public"));
+app.use(passport.initialize());
+app.use(passport.session());
 
-
+// passport.use(new localStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 const db = "uberDB";
 const mongodbLink = process.env.MONGOLAB_URI ||
@@ -18,16 +40,22 @@ mongoose.connect(mongodbLink, { useNewUrlParser: true }).then(value => {
     console.log(error);
 });
 
+app.get("/", function (req, res) {
+    res.render("homepage");
+});
 
-// APIs
-const carAPI   = require('./routes/car');
-const userAPI		= require('./routes/user');
+app.get("/register", function (req, res) {
+    res.render("register");
+});
 
-// models
-const Car = require('./models/car');
-const User = require('./models/user');
-const Trip = require('./models/trip');
-const Point = require('./models/point');
+app.get("/login", function (req, res) {
+    res.render("login");
+});
+
+app.get("/logout", function (req, res) {
+    res.render("logout");
+});
+
 
 routes.route('/user')
 
